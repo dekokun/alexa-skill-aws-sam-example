@@ -1,0 +1,8 @@
+{
+  "name": "alexa-skill-aws-sam-example",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "alexa-sdk": "^1.0.10"
+  }
+}

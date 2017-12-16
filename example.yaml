@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: sample alexa application
+Resources:
+  AlexaSampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs6.10
+      Environment:
+        Variables:
+          PRAISED_NAME: 'デコクン'
+      Events:
+        Alexa:
+          Type: AlexaSkill
