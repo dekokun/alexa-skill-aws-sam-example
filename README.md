@@ -39,4 +39,33 @@ $ STACK_NAME=__YOUR_OWN_CLOUDFORMATION_STACK_NAME__ # Anything is ok if the stac
 $ aws cloudformation deploy --template-file serverless-output.yaml --stack-name $STACK_NAME --capabilities CAPABILITY_IAM
 ```
 
+## models
 
+
+### intent scheme
+
+```bash
+{
+  "intents": [
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "GetPraiseIntent"
+    }
+  ]
+}
+```
+
+### samples
+
+```bash
+GetPraiseIntent 褒めて
+GetPraiseIntent ほめて
+```
