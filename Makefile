@@ -1,4 +1,5 @@
 ASK = node_modules/.bin/ask
+YARN = node_modules/.bin/yarn
 
 .PHONY: setup-node
 setup-node:
@@ -9,5 +10,6 @@ node_modules/%: package.json
 	@touch $@
 
 .PHONY: deploy
-deploy: $(ASK)
+deploy: $(ASK) $(YARN)
+	$(YARN) install --cwd lambda/custom/
 	$(ASK) deploy
