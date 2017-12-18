@@ -1,0 +1,25 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "褒めまくり",
+      "intents": [
+        {
+          "name": "AMAZON.HelpIntent"
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        },
+        {
+          "name": "AMAZON.CancelIntent"
+        },
+        {
+          "name": "GetPraiseIntent",
+          "samples": [
+            "褒めて",
+            "ほめて"
+          ]
+        }
+      ]
+    }
+  }
+}
