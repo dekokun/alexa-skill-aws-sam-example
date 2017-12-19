@@ -2,8 +2,7 @@
   "name": "alexa-skill-aws-sam-example",
   "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "ask-cli": "^1.0.0",
-    "yarn": "^1.3.2"
+  "dependencies": {
+    "alexa-sdk": "^1.0.10"
   }
 }
