@@ -26,16 +26,16 @@ $(OUTPUT_TEMPLATE): $(INPUT_TEMPLATE) $(CONFIG)
 	$(AWS) cloudformation package --template-file $(INPUT_TEMPLATE) --output-template-file $(OUTPUT_TEMPLATE) --s3-bucket $(BUCKET_NAME)
 
 .PHONY: deploy-sam $(CONFIG)
-deploy-sam: $(OUTPUT_TEMPLATE)
+deploy-sam: $(OUTPUT_TEMPLATE) $(YARN)
 	$(YARN) install --cwd lambda/custom/
 	$(AWS) cloudformation deploy --template-file $(OUTPUT_TEMPLATE) --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM
 
 .PHONY: deploy-ask
-deploy-ask:
+deploy-ask: $(ASK)
 	$(ASK) deploy -t skill
 	$(ASK) deploy -t model
 
 .PHONY: deploy
-deploy: $(ASK) $(YARN)
+deploy:
 	$(MAKE) deploy-ask
 	$(MAKE) deploy-sam
