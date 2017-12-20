@@ -1,5 +1,5 @@
-BUCKET_NAME = alexa-example # Anything is ok if the bucket name is not exists in the world.
-STACK_NAME = hogehoge # Anything is ok if the stack name is not exists in your CloudFormation stacks.
+CONFIG = config.mk
+include $(CONFIG)
 
 ASK = node_modules/.bin/ask
 YARN = node_modules/.bin/yarn
@@ -11,6 +11,9 @@ INPUT_TEMPLATE = ./example.yaml
 setup-s3:
 	$(aws) s3 mb $(BUCKET_NAME)
 
+setup-ask: $(ASK)
+	$(ASK) init
+
 .PHONY: setup-node
 setup-node:
 	npm install
@@ -19,10 +22,10 @@ node_modules/%: package.json
 	@$(MAKE) setup-node
 	@touch $@
 
-$(OUTPUT_TEMPLATE): $(INPUT_TEMPLATE)
+$(OUTPUT_TEMPLATE): $(INPUT_TEMPLATE) $(CONFIG)
 	$(AWS) cloudformation package --template-file $(INPUT_TEMPLATE) --output-template-file $(OUTPUT_TEMPLATE) --s3-bucket $(BUCKET_NAME)
 
-.PHONY: deploy-sam
+.PHONY: deploy-sam $(CONFIG)
 deploy-sam: $(OUTPUT_TEMPLATE)
 	$(YARN) install --cwd lambda/custom/
 	$(AWS) cloudformation deploy --template-file $(OUTPUT_TEMPLATE) --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM
