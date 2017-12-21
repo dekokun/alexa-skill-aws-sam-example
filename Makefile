@@ -47,3 +47,4 @@ $(ASK_CONFIG): $(ASK_CONFIG_SAMPLE) $(CONFIG)
 deploy:
 	$(MAKE) deploy-sam
 	$(MAKE) deploy-ask
+	@echo deploy finished !!!
