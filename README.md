@@ -42,13 +42,7 @@ If you already have the bucket, please skip this step.
 $ make setup-s3
 ```
 
-5. AWS SAM and ASK setting
-
-```bash
-$ make first-deploy
-```
-
-6. deploy
+5. deploy
 
 ```bash
 $ make deploy

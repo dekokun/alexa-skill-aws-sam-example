@@ -34,13 +34,11 @@ deploy-sam: $(OUTPUT_TEMPLATE) $(YARN)
 	$(AWS) cloudformation deploy --template-file $(OUTPUT_TEMPLATE) --stack-name $(STACK_NAME) --capabilities CAPABILITY_IAM || true
 
 .PHONY: deploy-ask
-deploy-ask: $(ASK)
+deploy-ask: $(ASK) $(ASK_CONFIG)
 	$(ASK) deploy -t skill
 	$(ASK) deploy -t model
 
-.PHONY: first-deploy
-first-deploy:
-	$(MAKE) deploy-sam
+$(ASK_CONFIG): $(ASK_CONFIG_SAMPLE) $(CONFIG)
 	$(eval LAMBDA_ARN := $(shell $(AWS) cloudformation list-exports | jq -r '.Exports[] | select(.Name == "$(STACK_NAME):AlexaSampleFunction:Arn") | select(.ExportingStackId | test("/$(STACK_NAME)/")).Value'))
 	$(warning $(LAMBDA_ARN))
 	cat $(ASK_CONFIG_SAMPLE) | jq '(.deploy_settings.default.merge.skillManifest.apis.custom.endpoint.uri) |= "$(LAMBDA_ARN)"' > $(ASK_CONFIG)
@@ -48,5 +46,5 @@ first-deploy:
 
 .PHONY: deploy
 deploy:
-	$(MAKE) deploy-ask
 	$(MAKE) deploy-sam
+	$(MAKE) deploy-ask
