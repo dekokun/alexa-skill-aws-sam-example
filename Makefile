@@ -1,13 +1,13 @@
 CONFIG = config.mk
 include $(CONFIG)
 
-ASK = node_modules/.bin/ask
-YARN = node_modules/.bin/yarn
-AWS = aws
-OUTPUT_TEMPLATE = ./serverless-output.yaml
-INPUT_TEMPLATE = ./example.yaml
-ASK_CONFIG = ./.ask/config
-ASK_CONFIG_SAMPLE = ./.ask/config.sample
+ASK := node_modules/.bin/ask
+YARN := node_modules/.bin/yarn
+AWS := aws
+OUTPUT_TEMPLATE := ./serverless-output.yaml
+INPUT_TEMPLATE := ./example.yaml
+ASK_CONFIG := ./.ask/config
+ASK_CONFIG_SAMPLE := ./.ask/config.sample
 
 .PHONY: setup-s3
 setup-s3:
