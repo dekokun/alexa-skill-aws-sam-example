@@ -1,14 +1,14 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "amzn1.ask.skill.c2225ecd-4f69-4377-8010-cece98dccfd5",
+      "skill_id": "",
       "was_cloned": false,
       "merge": {
         "skillManifest": {
           "apis": {
             "custom": {
               "endpoint": {
-                "uri": "arn:aws:lambda:ap-northeast-1:185743233732:function:hogehoge-AlexaSampleFunction-6V13ZAA1SMCT"
+                "uri": ""
               }
             }
           }

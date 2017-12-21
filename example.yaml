@@ -14,3 +14,9 @@ Resources:
       Events:
         Alexa:
           Type: AlexaSkill
+Outputs:
+  AlexaSampleFunctionArn:
+    Value: !GetAtt AlexaSampleFunction.Arn
+    Export: {
+      Name: !Sub '${AWS::StackName}:AlexaSampleFunction:Arn'
+      }

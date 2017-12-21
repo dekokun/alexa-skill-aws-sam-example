@@ -3,18 +3,18 @@
     "publishingInformation": {
       "locales": {
         "ja-JP": {
-          "summary": "むすんでひらいて",
+          "summary": "褒める",
           "examplePhrases": [
-            "アレクサ、むすんでひらいててをうってむすんで"
+            "アレクサ、褒めて"
           ],
           "name": "褒める",
-          "smallIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.c2225ecd-4f69-4377-8010-cece98dccfd5/images/eyJkIjoidzRtRzRNcGlwSWh1UTdaanFQcVFMMDNsL1VHd1g5Qm5rNFdXVHh3Z2loRHZ5R0lKblhyK1kzNFRyeHVucEsrZDdKdnhQb3NmcFdtZTZSVmR6K0paTGc1SHhTSTZ6eHY5TjRNS0NFei9yNDVpV21KdndXVlE1K210cnk2ZjlQUmMiLCJpdiI6ImtTS2RhWVhadG9CamJ1c2VWZjV6eEE9PSIsInYiOjF9",
-          "description": "むすんでひらきます。",
-          "largeIconUri": "https://api.amazonalexa.com/v0/skills/amzn1.ask.skill.c2225ecd-4f69-4377-8010-cece98dccfd5/images/eyJkIjoiMXpOR3VuQ1A0RkZ2ZmZTSnBlV2VmRU8wNTdlY0VaUEFpRnFtMVA0RldmU2dESVJxTlZWMWhxYXZSaVo0RE05VnhhanpaSnFlVWZ1QnVLaWNjQkJkSGY1Q3lCYVpkKy9oZlllblUwNmF0NVFLNlJPemRMMFRnenJqZVJ0MTFxQVpmaDNzVk9TMTRZRUdISFpJRlVWcXJnPT0iLCJpdiI6InRKd0hncFAyaUt2WlFYL000U0xmWHc9PSIsInYiOjF9"
+          "smallIconUri": "",
+          "description": "褒めまくります",
+          "largeIconUri": ""
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "\"アレクサ、むすんでひらいててをうってむすんで\" とechoに話しかける",
+      "testingInstructions": "\"アレクサ、褒めて\" とechoに話しかける",
       "category": "EDUCATION_AND_REFERENCE",
       "distributionCountries": []
     },

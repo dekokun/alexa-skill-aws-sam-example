@@ -8,6 +8,10 @@
 
 - Register for an [AWS ACCOUNT](https://aws.amazon.com/)
 - Install and Setup [AWS CLI](https://aws.amazon.com/cli/)
+  - Setup: [AWS account and credentials](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+- Install [Node.js](https://nodejs.org/en/download/)
+- Install [jq](https://stedolan.github.io/jq/download/)
+- [Amazon developer account](https://developer.amazon.com/) to manage your Alexa skills.
 
 ### Installation
 
@@ -17,55 +21,36 @@
 $ git clone https://github.com/dekokun/alexa-skill-aws-sam-example.git
 ```
 
-2. Install npm dependencies by running the npm command: `npm install`
+2. Change config file
 
 ```bash
 $ cd alexa-skill-aws-sam-example
-$ npm install
+$ vi config.mk
 ```
 
-3. Make S3 bucket for lambda deploy
+3. ASK CLI setting
 
 ```bash
-$ BUCKET_NAME=__YOUR_OWN_S3_BUCKET_NAME__
-$ aws s3 mb s3://$BUCKET_NAME # Anything is ok if the bucket is not exists in the world.
+$ make setup-ask
 ```
 
-4. Package lambda function and transform yaml and deploy
+4. Make S3 bucket for lambda deploy
+
+If you already have the bucket, please skip this step.
 
 ```bash
-$ aws cloudformation package --template-file example.yaml --output-template-file serverless-output.yaml --s3-bucket $BUCKET_NAME
-$ STACK_NAME=__YOUR_OWN_CLOUDFORMATION_STACK_NAME__ # Anything is ok if the stack is not exists in your account.
-$ aws cloudformation deploy --template-file serverless-output.yaml --stack-name $STACK_NAME --capabilities CAPABILITY_IAM
+$ make setup-s3
 ```
 
-## models
-
-
-### intent scheme
+5. AWS SAM and ASK setting
 
 ```bash
-{
-  "intents": [
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "AMAZON.CancelIntent"
-    },
-    {
-      "intent": "GetPraiseIntent"
-    }
-  ]
-}
+$ make first-deploy
 ```
 
-### samples
+6. deploy
 
 ```bash
-GetPraiseIntent 褒めて
-GetPraiseIntent ほめて
+$ make deploy
 ```
+
