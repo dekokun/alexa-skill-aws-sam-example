@@ -11,6 +11,7 @@ INPUT_TEMPLATE = ./example.yaml
 setup-s3:
 	$(aws) s3 mb $(BUCKET_NAME)
 
+.PHONY: setup-ask
 setup-ask: $(ASK)
 	$(ASK) init
 
