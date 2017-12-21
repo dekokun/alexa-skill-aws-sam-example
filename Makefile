@@ -7,7 +7,7 @@ AWS := $(shell command -v aws 2> /dev/null)
 JQ := $(shell command -v jq 2> /dev/null)
 NODE := $(shell command -v jq 2> /dev/null)
 OUTPUT_TEMPLATE := ./serverless-output.yaml
-INPUT_TEMPLATE := ./example.yaml
+INPUT_TEMPLATE := ./template.yml
 ASK_CONFIG := ./.ask/config
 ASK_CONFIG_SAMPLE := ./.ask/config.sample
 
