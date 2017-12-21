@@ -7,6 +7,7 @@ AWS = aws
 OUTPUT_TEMPLATE = ./serverless-output.yaml
 INPUT_TEMPLATE = ./example.yaml
 ASK_CONFIG = ./.ask/config
+ASK_CONFIG_SAMPLE = ./.ask/config.sample
 
 .PHONY: setup-s3
 setup-s3:
@@ -42,9 +43,7 @@ first-deploy:
 	$(MAKE) deploy-sam
 	$(eval LAMBDA_ARN := $(shell $(AWS) cloudformation list-exports | jq -r '.Exports[] | select(.Name == "$(STACK_NAME):AlexaSampleFunction:Arn") | select(.ExportingStackId | test("/$(STACK_NAME)/")).Value'))
 	$(warning $(LAMBDA_ARN))
-	cat $(ASK_CONFIG) | jq '(.deploy_settings.default.merge.skillManifest.apis.custom.endpoint.uri) |= "$(LAMBDA_ARN)"' > $(ASK_CONFIG).generated
-	diff $(ASK_CONFIG) $(ASK_CONFIG).generated || true
-	mv $(ASK_CONFIG).generated $(ASK_CONFIG)
+	cat $(ASK_CONFIG_SAMPLE) | jq '(.deploy_settings.default.merge.skillManifest.apis.custom.endpoint.uri) |= "$(LAMBDA_ARN)"' > $(ASK_CONFIG)
 	$(MAKE) deploy-ask
 
 .PHONY: deploy
