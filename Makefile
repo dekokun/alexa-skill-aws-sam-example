@@ -42,7 +42,6 @@ $(ASK_CONFIG): $(ASK_CONFIG_SAMPLE) $(CONFIG)
 	$(eval LAMBDA_ARN := $(shell $(AWS) cloudformation list-exports | jq -r '.Exports[] | select(.Name == "$(STACK_NAME):AlexaSampleFunction:Arn") | select(.ExportingStackId | test("/$(STACK_NAME)/")).Value'))
 	$(warning $(LAMBDA_ARN))
 	cat $(ASK_CONFIG_SAMPLE) | jq '(.deploy_settings.default.merge.skillManifest.apis.custom.endpoint.uri) |= "$(LAMBDA_ARN)"' > $(ASK_CONFIG)
-	$(MAKE) deploy-ask
 
 .PHONY: deploy
 deploy:
